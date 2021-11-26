@@ -1,0 +1,63 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+
+    <!-- model.name tree view -->
+    <record id="product_tree" model="ir.ui.view">
+        <field name="name">shop.product.tree</field>
+        <field name="model">shop.product</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="orderclient_id"/>
+                <field name="price"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- model.name form view -->
+    <record id="product_form" model="ir.ui.view">
+        <field name="name">shop.product.form</field>
+        <field name="model">shop.product</field>
+        <field name="arch" type="xml">
+            <form string="product form">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="orderclient_id"/>
+                            <field name="price"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- model.name search view -->
+    <record id="product_search" model="ir.ui.view">
+        <field name="name">shop.product.search</field>
+        <field name="model">shop.product</field>
+        <field name="arch" type="xml">
+            <search string="Search by:">
+                <field name="name"/>
+                <field name="orderclient_id"/>
+                <field name="price"/>
+            </search>
+        </field>
+    </record>
+
+    <!-- model.name action window -->
+    <record id="product_action" model="ir.actions.act_window">
+        <field name="name">Products</field>
+        <field name="res_model">shop.product</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- This Menu Item will appear in the Upper bar, that's why It needs NO parent or action -->
+    <menuitem id="shop_root" name="APEIN"/>
+    <!-- This Menu Item Must have a parent -->
+    <menuitem id="shop_product_root" name="Products" parent="shop_root"/>
+    <!-- This Menu Item must have a parent and an action -->
+    <menuitem id="shop_product" name="Product List" parent="shop_product_root" action="product_action"/>
+
+</odoo>

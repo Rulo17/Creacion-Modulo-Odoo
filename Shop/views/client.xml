@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+
+    <!-- model.name tree view -->
+    <record id="client_tree" model="ir.ui.view">
+        <field name="name">shop.client.tree</field>
+        <field name="model">shop.client</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- model.name form view -->
+    <record id="client_form" model="ir.ui.view">
+        <field name="name">shop.client.form</field>
+        <field name="model">shop.client</field>
+        <field name="arch" type="xml">
+            <form string="client form">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- model.name search view -->
+    <record id="client_search" model="ir.ui.view">
+        <field name="name">shop.client.search</field>
+        <field name="model">shop.client</field>
+        <field name="arch" type="xml">
+            <search string="Search by:">
+                <field name="name"/>  
+            </search>
+        </field>
+    </record>
+
+    <!-- model.name action window -->
+    <record id="client_action" model="ir.actions.act_window">
+        <field name="name">Clients</field>
+        <field name="res_model">shop.client</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- This Menu Item will appear in the Upper bar, that's why It needs NO parent or action -->
+    <menuitem id="shop_root" name="APEIN"/>
+    <!-- This Menu Item Must have a parent -->
+    <menuitem id="shop_client_root" name="Clients" parent="shop_root"/>
+    <!-- This Menu Item must have a parent and an action -->
+    <menuitem id="shop_client" name="Client List" parent="shop_client_root" action="client_action"/>
+
+</odoo>

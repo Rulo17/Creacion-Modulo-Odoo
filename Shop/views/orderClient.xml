@@ -1,0 +1,71 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+
+    <!-- model.name tree view -->
+    <record id="orderclient_tree" model="ir.ui.view">
+        <field name="name">shop.orderclient.tree</field>
+        <field name="model">shop.orderclient</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="code"/>
+                <field name="product_ids"/>
+                <field name="date"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- model.name form view -->
+    <record id="orderclient_form" model="ir.ui.view">
+        <field name="name">shop.orderclient.form</field>
+        <field name="model">shop.orderclient</field>
+        <field name="arch" type="xml">
+            <form string="orderclient form">
+                <sheet>
+                    <group>
+                        <field name="code"/>
+                        <field name="product_ids"/>
+                        <field name="date"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- model.name calendar view -->
+    <record id="orderclient_calendar" model="ir.ui.view">
+        <field name="name">shop.orderclient.calendar</field>
+        <field name="model">shop.orderclient</field>
+        <field name="arch" type="xml">
+            <calendar string="Calendar:" date_start="date">
+                <field name="code"/>
+            </calendar>
+        </field>
+    </record>
+
+    <!-- model.name search view -->
+    <record id="orderclient_search" model="ir.ui.view">
+        <field name="name">shop.orderclient.search</field>
+        <field name="model">shop.orderclient</field>
+        <field name="arch" type="xml">
+            <search string="Search by:">
+                <field name="code"/>
+                <field name="date"/>
+            </search>
+        </field>
+    </record>
+
+    <!-- model.name action window -->
+    <record id="orderclient_action" model="ir.actions.act_window">
+        <field name="name">Clients Orders</field>
+        <field name="res_model">shop.orderclient</field>
+        <field name="view_mode">tree,form,calendar</field>
+    </record>
+
+    <!-- This Menu Item will appear in the Upper bar, that's why It needs NO parent or action -->
+    <menuitem id="shop_root" name="APEIN"/>
+    <!-- This Menu Item Must have a parent -->
+    <menuitem id="shop_orderclient_root" name="Clients Orders" parent="shop_root"/>
+    <!-- This Menu Item must have a parent and an action -->
+    <menuitem id="shop_orderclient" name="Clients Orders List" parent="shop_orderclient_root" action="orderclient_action"/>
+
+</odoo>
